@@ -20,10 +20,12 @@ typedef struct {
     double earned;
 } bills;
 
-void populate_bills();
-int assign(char * buf);
 void checkearned(bills * money);
-
-
+int assign(char * buf);
+double total(bills * cash);
+void init_bills(bills * money);
+void print_bills(char * message, bills * money, int mode);
+bills pull_out(bills * money);
+void populate_bills();
 
 
