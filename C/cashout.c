@@ -71,59 +71,59 @@ bills pull_out(bills * money){
 	if(money->earned){
 		if(money->earned/100 >= 1 && money->earned/100){
 			earnedbills.hundred = money->earned/100;
-			money->hundred -= money->earned/100;
+			money->hundred -= (int)money->earned/100;
 			money->earned -= earnedbills.hundred * 100;
 		}
 		if(money->earned/50 >= 1 && money->fifty){
 			earnedbills.fifty = money->earned/50;
-			money->fifty -= money->earned/50;
+			money->fifty -= (int)money->earned/50;
 			money->earned -= earnedbills.fifty * 50;
 		}
 		if(money->earned/20 >= 1 && money->twenty){
 			earnedbills.twenty = money->earned/20;
-			money->twenty -= money->earned/20;
+			money->twenty -= (int)money->earned/20;
 			money->earned -= earnedbills.twenty * 20;
 		}
 		if(money->earned/10 >= 1 && money->ten){
 			earnedbills.ten = money->earned/10;
-			money->ten-=money->earned/10;
+			money->ten -= (int)money->earned/10;
 			money->earned -= earnedbills.ten * 10;
 		}
 		if(money->earned/5 >= 1 && money->five){
 			earnedbills.five = money->earned/5;
-			money->five -= money->earned/5;
+			money->five -= (int)money->earned/5;
 			money->earned -= earnedbills.five * 5;
 		}
 		if(money->earned/2 >= 1 && money->two){
 			earnedbills.two = money->earned/2;
-			money->two -= money->earned/2;
+			money->two -= (int)money->earned/2;
 			money->earned -= earnedbills.two * 2;
 		}
 		if(money->earned/1 >= 1 && money->one){
 			earnedbills.one = money->earned/1;
-			money->one -= money->earned/1;
+			money->one -= (int)money->earned/1;
 			money->earned -= earnedbills.one * 1;
 		}	
 		if(money->earned/0.25 >= 1 && money->quarter){
 			earnedbills.quarter = money->earned/0.25;
-			money->quarter -= money->earned/0.25;
+			money->quarter -= (int)(money->earned/0.25);
 			money->earned -= earnedbills.quarter * 0.25;
 		}	
 		if(money->earned/0.1 >= 1 && money->dime){
-			earnedbills.dime = money->earned/0.1;
-			money->dime -= money->earned/0.1;
-			money->earned -= earnedbills.dime * 0.1;
+			earnedbills.dime = money->earned/0.10;
+			money->dime -= (int)(money->earned/0.10);
+			money->earned -= earnedbills.dime * 0.10;
 		}	
-		printf("\n mmmmmmmmmm %4.2f earned %d nickels\n",money->earned/0.05, money->nickel);
+		//printf("\n mmmmmmmmmm %4.2f earned %d nickels\n",money->earned/0.05, money->nickel);
 		if(money->earned/0.05 >= 1 && money->nickel){
 			earnedbills.nickel = money->earned/0.05;
-			money->nickel -= money->earned/0.05;
+			money->nickel -= (int)(money->earned/0.05);
 			money->earned -= earnedbills.nickel * 0.05;
 		}
-		printf("\n mmmmmmmmmm %4.2f earned %d pennies\n",money->earned/0.01, money->penny);	
+		//printf("\n mmmmmmmmmm %4.2f earned %d pennies\n",money->earned/0.01, money->penny);	
 		if(money->earned/0.01 >= 1 && money->penny){
 			earnedbills.penny = money->earned/0.01;
-			money->penny -= money->earned/0.01;
+			money->penny -= (int)(money->earned/0.01);
 			money->earned -= earnedbills.penny * 0.01;
 		}	
 	}
