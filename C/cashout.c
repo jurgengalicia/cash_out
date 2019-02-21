@@ -13,8 +13,10 @@ int assign(char * buf){
 }
 
 double total(bills * cash){	
-	return cash->hundred*100 + cash->fifty*50 + cash->twenty*20 + cash->ten*10 +
+	double result = cash->hundred*100 + cash->fifty*50 + cash->twenty*20 + cash->ten*10 +
 	cash->five*5 + cash->two*2 + cash->one*1 + cash->quarter*0.25 + cash->dime*0.1 + cash->nickel*0.05 + cash->penny*0.01;
+	result = result * 100 + 0.5;
+	return result / 100;
 }
 
 void init_bills(bills * money){
@@ -57,8 +59,8 @@ void print_bills(char * message, bills * money, int mode){
 		printf("%d pennies\n",money->penny);
 	printf("%4.2f total money\n", money->total);
 	if(mode){
-		printf("%d$ to leave in the register\n", money->leave);
-		printf("%4.2f$ earned\n", money->earned);
+		printf("$%4.2f to leave in the register\n", money->leave);
+		printf("$%4.2f earned\n", money->earned);
 	}
 	
 }
@@ -113,14 +115,12 @@ bills pull_out(bills * money){
 			earnedbills.dime = money->earned/0.10;
 			money->dime -= (int)(money->earned/0.10);
 			money->earned -= earnedbills.dime * 0.10;
-		}	
-		//printf("\n mmmmmmmmmm %4.2f earned %d nickels\n",money->earned/0.05, money->nickel);
+		}
 		if(money->earned/0.05 >= 1 && money->nickel){
 			earnedbills.nickel = money->earned/0.05;
 			money->nickel -= (int)(money->earned/0.05);
 			money->earned -= earnedbills.nickel * 0.05;
-		}
-		//printf("\n mmmmmmmmmm %4.2f earned %d pennies\n",money->earned/0.01, money->penny);	
+		}	
 		if(money->earned/0.01 >= 1 && money->penny){
 			earnedbills.penny = money->earned/0.01;
 			money->penny -= (int)(money->earned/0.01);
@@ -138,19 +138,19 @@ void populate_bills(){
 	bills cash;
 	printf("how much money to leave in the register?\n");
 	cash.leave = assign(buf);
-	printf("how many 100$s?\n");
+	printf("how many $100s?\n");
 	cash.hundred = assign(buf);
-	printf("how many 50$s?\n");
+	printf("how many $50s?\n");
 	cash.fifty = assign(buf);
-	printf("how many 20$s?\n");
+	printf("how many $20s?\n");
 	cash.twenty = assign(buf);
-	printf("how many 10$s?\n");
+	printf("how many $10s?\n");
 	cash.ten = assign(buf);
-	printf("how many 5$s?\n");
+	printf("how many $5s?\n");
 	cash.five = assign(buf);
-	printf("how many 2$s?\n");
+	printf("how many $2s?\n");
 	cash.two = assign(buf);
-	printf("how many 1$s?\n");
+	printf("how many $1s?\n");
 	cash.one = assign(buf);
 	printf("how many quarters?\n");
 	cash.quarter = assign(buf);
